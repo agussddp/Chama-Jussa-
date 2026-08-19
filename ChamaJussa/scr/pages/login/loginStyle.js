@@ -7,17 +7,19 @@ export const LoginStyle = StyleSheet.create({
     resizeMode: "contain",
   },
   text_input : {
-    fontWeight: 750,
+   width: 250,
+    fontWeight: "700",
     fontSize: 12,
     color: "#000",
-    
+    textAlign: "left",
+    marginBottom: 5,
   },
   main_section: {
     flex: 1,
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#4D6FC6",
+    backgroundColor: "#282F32",
   },
   section_card: {
     width: 300,
@@ -26,8 +28,8 @@ export const LoginStyle = StyleSheet.create({
     justifyContent: "center",
     flexDirection: "column",
     padding: 16,
-    backgroundColor: "#FFFFFF",
-    borderRadius: 5,
+    backgroundColor: "#4F585C",
+    borderRadius: 8,
   },
   header_section: {
     width: "100%",
@@ -38,19 +40,20 @@ export const LoginStyle = StyleSheet.create({
     paddingTop: 8,
     paddingBottom: 12,
   },
-  header_section__tittle: {
+  header_section__titulo: {
     fontSize: 22,
     fontWeight: "bold",
     color: "#111111",
+
+   
   },
-  header_section__subtittle: {
+  header_section__subtitulo: {
     fontSize: 12,
     color: "rgba(0, 0, 0, 0.67)",
   },
   login_user: {
     width: "100%",
     padding: 5,
-    paddingLeft: "7%",
     justifyContent: "center",
     flexDirection: "column",
     alignItems: "center",
@@ -74,16 +77,18 @@ export const LoginStyle = StyleSheet.create({
     paddingHorizontal: 10,
     color: "#000000",
     marginBottom: 20,
+
   },
   login_user__button: {
     width: 250,
     height: 45,
     borderRadius: 8,
-    backgroundColor: "#2C7BE5",
+    backgroundColor: "#C0191F",
     color: "#FFF",
     alignItems: "center",
     justifyContent: "center",
     marginTop: 5,
+
   },
   login_user__button_text : {
     color: "#FFF",
