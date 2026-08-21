@@ -13,7 +13,7 @@ export function Perfil() {
             <View style={PerfilStyle.section_card}>
 
 
-                <Image style={PerfilStyle.figure_section__img} source={require("../../../assets/Beatriz-Andrade.png")} />
+                <Image style={PerfilStyle.figure_section__img} source={require("../../../assets/User.jpg")} />
 
                 <Text style={PerfilStyle.section__texto1}>Beatriz Andrade </Text>
                 <Text style={PerfilStyle.section__texto2}>BeatrizAndrade@emai.com </Text>
@@ -30,3 +30,5 @@ export function Perfil() {
         </View>
     )
 }
+
+

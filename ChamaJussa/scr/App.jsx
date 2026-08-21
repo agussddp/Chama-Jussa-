@@ -7,6 +7,9 @@ import { Perfil } from './pages/perfil/perfil';
 import { Login } from './pages/login/login'
 import { CriarOS } from './pages/criarOS/criarOS'
 import { Cadastro } from './pages/cadastro/cadastro'
+import { DetalheOS } from './pages/detalheOS/detalheOS';
+import { PainelNotificacoes } from './pages/painelNotificacoes/painelNotificacoes';
+import { MinhaOS } from './pages/minhasOS/minhasOS';
 
 
 
@@ -21,8 +24,8 @@ export default function App() {
 
         <View style={styles.container}>
 
-          <Cadastro />
-          {/* <Perfil /> */}
+          <DetalheOS/>
+
           <StatusBar style="auto" />
 
         </View>
