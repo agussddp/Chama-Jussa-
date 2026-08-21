@@ -1,12 +1,30 @@
 CREATE DATABASE Chama_Jussa
 
 CREATE TABLE tb_Usuario (
-ID_Usuario  INT IDENTITY (1,1) PRIMARY KEY
+ID_Usuario VARCHAR(40) PRIMARY KEY NOT NULL
 
 ,nome_completo	 NVARCHAR(255)			NOT NULL
 ,email			 NVARCHAR(255)	UNIQUE	NOT NULL
-,senha			 NVARCHAR(50)			NOT NULL
+,senha			 NVARCHAR(100)			NOT NULL
 ,foto_perfil_url NVARCHAR(150)			NULL
 
 
 )
+
+CREATE TABLE tb_Chamado (
+ID_Chamado VARCHAR(40) PRIMARY KEY NOT NULL
+
+,Titulo			NVARCHAR(100)			NOT NULL
+,Equipamento	NVARCHAR(100)			NULL
+,Localiza		NVARCHAR(100)			NOT NULL
+,Descricao		NVARCHAR(255)			NOT NULL
+,foto_OS_url	NVARCHAR(150)			NULL
+,sus_OS		NVARCHAR(30)			NOT NULL
+,data_criacao	DATETIME				NOT NULL
+,data_atualizacao DATETIME				NOT NULL
+
+,ID_Usuario	VARCHAR(40)		FOREIGN KEY REFERENCES Tb_Usuario (ID_Usuario)
+
+)
+
+
