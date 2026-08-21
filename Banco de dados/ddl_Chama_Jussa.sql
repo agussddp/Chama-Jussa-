@@ -5,7 +5,7 @@ ID_Usuario VARCHAR(40) PRIMARY KEY NOT NULL
 
 ,nome_completo	 NVARCHAR(255)			NOT NULL
 ,email			 NVARCHAR(255)	UNIQUE	NOT NULL
-,senha			 NVARCHAR(50)			NOT NULL
+,senha			 NVARCHAR(100)			NOT NULL
 ,foto_perfil_url NVARCHAR(150)			NULL
 
 
@@ -19,7 +19,7 @@ ID_Chamado VARCHAR(40) PRIMARY KEY NOT NULL
 ,Localiza		NVARCHAR(100)			NOT NULL
 ,Descricao		NVARCHAR(255)			NOT NULL
 ,foto_OS_url	NVARCHAR(150)			NULL
-,status_OS		NVARCHAR(30)			NOT NULL
+,sus_OS		NVARCHAR(30)			NOT NULL
 ,data_criacao	DATETIME				NOT NULL
 ,data_atualizacao DATETIME				NOT NULL
 
