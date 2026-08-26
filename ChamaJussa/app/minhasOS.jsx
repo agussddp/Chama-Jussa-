@@ -1,1 +1,0 @@
-export { MinhasOS as default } from '../scr/pages/minhasOS/minhasOS';

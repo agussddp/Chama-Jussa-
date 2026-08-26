@@ -1,1 +1,0 @@
-export { Perfil as default } from '../scr/pages/perfil/perfil';
