@@ -22,7 +22,7 @@ export function Perfil() {
 
   <TouchableOpacity style={PerfilStyle.user__button}>
 
-        <Text style={PerfilStyle.button_text}>Sair da conta</Text>
+        <Text style={PerfilStyle.button_text} onPress={'/login'}>Sair da conta</Text>
 
         </TouchableOpacity>
 
