@@ -24,7 +24,7 @@ export default function App() {
 
         <View style={styles.container}>
 
-          <DetalheOS/>
+          <PainelNotificacoes/>
 
           <StatusBar style="auto" />
 

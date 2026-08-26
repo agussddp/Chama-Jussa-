@@ -48,7 +48,7 @@ export const minhaOSStyle = StyleSheet.create({
      section_card2: {
        
         width: '80%',
-        height: 240,
+        height: 340,
         alignItems: "center",
         justifyContent: "space-between",
         padding: 16,
@@ -123,7 +123,7 @@ user__button3: {
     justifyContent: "center",
 },
 user__button4: {
-    width: 250,
+    width: 100,
     height: 40,
     borderRadius: 8,
     backgroundColor: "#4F585C",
@@ -132,7 +132,7 @@ user__button4: {
     alignItems: "center",
     justifyContent: "center",
     marginTop: 10,
-    alignSelf: 'flex-left'
+    alignSelf: 'flex-start'
     // borderColor: "red",
     // borderWidth: 2,
     // borderStyle: "solid"

@@ -9,7 +9,7 @@ export const PainelNotificacoesStyle = StyleSheet.create({
     },
     caixaTextos: {
         // backgroundColor: "red",
-        width: "85%"
+        width: "75%"
     },
     Text: {
         fontSize: 18,
@@ -66,14 +66,15 @@ export const PainelNotificacoesStyle = StyleSheet.create({
         borderRadius: 8,
         alignSelf: 'center'
     },
-
+    
     section__texto3: {
         fontWeight: '600',
         fontSize: 18,
         color: 'black',
         marginBottom: 3,
-        textAlign: 'center',
-        marginBottom: 12,
+        alignItems: "center",
+        // textAlign: 'center',
+
 
 
     },
@@ -105,6 +106,11 @@ export const PainelNotificacoesStyle = StyleSheet.create({
         textAlign: 'right',
 
 
+    },
+    Data_Hora: {
+        flexDirection: "row",
+        alignItems: "center",
+        gap: 260
     },
 
 })
