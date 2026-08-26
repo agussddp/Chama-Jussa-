@@ -1,20 +1,17 @@
 import { StyleSheet } from "react-native";
 
+
 export const FooterStyle = StyleSheet.create({
     Container: {
         width: '100%',
-        // height: '100px',
         flexDirection: 'row',
         justifyContent: 'space-around',
         alignItems: 'center',
         backgroundColor: '#4F585C',
-     
-    
     },
     Item: {
         alignItems: 'center',
         justifyContent: 'center',
-        
     },
     CirculoAtivo: {
         width: 34,
@@ -29,14 +26,14 @@ export const FooterStyle = StyleSheet.create({
         height: 24,
     },
     IconeAtivo: {
-        tintColor: '#000',
+        tintColor: '#C0191F',
     },
     Label: {
         fontSize: 12,
         color: '#999',
     },
     LabelAtivo: {
-        color: '#000',
-    
+        color: '#C0191F',
+        fontWeight: '600',
     },
 });

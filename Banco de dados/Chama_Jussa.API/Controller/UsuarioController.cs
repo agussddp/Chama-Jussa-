@@ -1,6 +1,7 @@
 ﻿using Chama_Jussa.API.DTO;
 using Chama_Jussa.API.Iterfaces;
 using Chama_Jussa.API.Models;
+using Chama_Jussa.API.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Chama_Jussa.API.Controller
@@ -69,6 +70,46 @@ namespace Chama_Jussa.API.Controller
                     innerInnerException = ex.InnerException?.InnerException?.Message
                 });
             }
+
+
+            }
+
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(Guid id)
+        {
+            var ChamadoBuscado = _usuarioRepository.BuscarPorId(id);
+            if (ChamadoBuscado == null)
+                return NotFound("Chamado não encontrado!");
+
+            var pastaRelativa = "wwwroot/imagens";
+            var caminhoPasta = Path.Combine(Directory.GetCurrentDirectory(), pastaRelativa);
+
+
+            if (!string.IsNullOrEmpty(ChamadoBuscado.FotoPerfilUrl))
+            {
+                var caminho = Path.Combine(caminhoPasta, ChamadoBuscado.FotoPerfilUrl);
+
+                if (System.IO.File.Exists(caminho))
+                    System.IO.File.Delete(caminho);
+            }
+
+
+            try
+            {
+                _usuarioRepository.Deletar(id);
+
+                return NoContent();
+
+
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+
+
+
         }
 
        

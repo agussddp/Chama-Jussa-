@@ -1,0 +1,1 @@
+export { CriarOS as default } from '../scr/pages/criarOS/criarOS';

@@ -1,0 +1,1 @@
+export { Cadastro as default } from '../scr/pages/cadastro/cadastro';

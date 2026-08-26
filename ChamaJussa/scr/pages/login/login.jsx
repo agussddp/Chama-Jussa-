@@ -1,6 +1,7 @@
 import { Text, View, TextInput, TouchableOpacity, Image } from "react-native";
 import { LoginStyle } from "./loginStyle";
 import { useState } from "react";
+import { router } from "expo-router";
 
 
 export function Login () {
@@ -55,7 +56,7 @@ export function Login () {
 
         <TouchableOpacity style={LoginStyle.login_user__button}>
 
-        <Text style={LoginStyle.login_user__button_text}>Acessar o sistema</Text>
+        <Text style={LoginStyle.login_user__button_text} onPress={() => router.push('/criarOS')}>Acessar o sistema</Text>
 
         </TouchableOpacity>
 

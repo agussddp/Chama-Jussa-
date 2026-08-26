@@ -70,6 +70,25 @@ namespace Chama_Jussa.API.Repositories
                 throw;
             }
         }
+
+        public void Deletar(Guid id)
+        {
+            try
+            {
+                TbUsuario UsuarioBuscado = _context.TbUsuarios.Find(id.ToString())!;
+
+                if (UsuarioBuscado != null)
+                {
+                    _context.TbUsuarios.Remove(UsuarioBuscado);
+                }
+                _context.SaveChanges();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 
 

@@ -206,7 +206,7 @@ namespace Chama_Jussa.API.Controller
         {
             var ChamadoBuscado = _chamadoRepository.BuscarPorId(id);
             if (ChamadoBuscado == null)
-                return NotFound("Filme não encontrado!");
+                return NotFound("Chamado não encontrado!");
 
             var pastaRelativa = "wwwroot/imagens";
             var caminhoPasta = Path.Combine(Directory.GetCurrentDirectory(), pastaRelativa);

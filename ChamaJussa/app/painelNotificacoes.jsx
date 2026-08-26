@@ -1,0 +1,1 @@
+export { PainelNotificacoes as default } from '../scr/pages/painelNotificacoes/painelNotificacoes';
