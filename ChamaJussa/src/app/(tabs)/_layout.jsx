@@ -9,12 +9,12 @@ export default function TabsLayout() {
         tabBarActiveTintColor: "#C0191F",
         tabBarInactiveTintColor: "#282F32",
         tabBarStyle: {
-          height: 65,
+          height: 95,
           paddingBottom: 8,
           paddingTop: 6,
           borderTopWidth: 1,
-          borderTopColor: "#4F585C",
-          backgroundColor: "#4F585C",
+          borderTopColor: "#686F73",
+          backgroundColor: "#768085",
         },
         tabBarLabelStyle: {
           fontSize: 10,
@@ -40,7 +40,7 @@ export default function TabsLayout() {
           ),
         }}
       />
-      <Tabs.Screen
+      {/* <Tabs.Screen
         name="detalheOS"
         options={{
           title: "Detalhes",
@@ -48,7 +48,7 @@ export default function TabsLayout() {
             <Ionicons name="arrow-up-right-box-outline" size={size} color={color} />
           ),
         }}
-      />
+      /> */}
       
       <Tabs.Screen
         name="painelNotificacoes"

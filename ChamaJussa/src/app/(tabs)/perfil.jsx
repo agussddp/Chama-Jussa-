@@ -1,6 +1,6 @@
 import { Text, View } from "react-native";
 import { PerfilStyle } from "./styles/perfilStyle"
-import { Footer } from "../../components/footer/Footer"
+
 import { Image } from "react-native";
 import { TouchableOpacity } from "react-native";
 import { Link } from "expo-router";
@@ -29,7 +29,7 @@ export default function Perfil() {
                 </TouchableOpacity>
             </Link>
 
-            {/* <Footer /> */}
+         
         </View>
     )
 }

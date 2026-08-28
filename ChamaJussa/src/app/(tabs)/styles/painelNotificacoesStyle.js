@@ -12,9 +12,9 @@ export const PainelNotificacoesStyle = StyleSheet.create({
         width: "75%"
     },
     Text: {
-        fontSize: 18,
+        fontSize: 20,
         fontWeight: '700',
-        marginTop: 20,
+        marginTop: 30,
         color: '#C0191F',
         marginBottom: 16,
         textAlign: 'center'
@@ -22,49 +22,86 @@ export const PainelNotificacoesStyle = StyleSheet.create({
     section_card: {
 
         width: '80%',
-        height: 180,
+        height: 150,
         alignItems: "center",
         justifyContent: "space-between",
         padding: 16,
-        backgroundColor: "#4F585C",
+        backgroundColor: "#98A2A6",
         borderRadius: 8,
         marginBottom: 20,
-        alignSelf: 'center'
+        alignSelf: 'center',
+        elevation: 4,
+
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 1,
+        shadowRadius: 3,
     },
     section_card2: {
 
         width: '80%',
-        height: 180,
+        height: 150,
         alignItems: "center",
         justifyContent: "space-between",
         padding: 16,
-        backgroundColor: "#4F585C",
+        backgroundColor: "#98A2A6",
         borderRadius: 8,
         marginBottom: 20,
-        alignSelf: 'center'
+        alignSelf: 'center',
+        elevation: 4,
+
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 1,
+        shadowRadius: 3,
+
     },
     section_card3: {
 
         width: '80%',
-        height: 180,
+        height: 150,
         alignItems: "center",
         justifyContent: "space-between",
         padding: 16,
-        backgroundColor: "#4F585C",
+        backgroundColor: "#98A2A6",
         borderRadius: 8,
         alignSelf: 'center',
         marginBottom: 20,
+        elevation: 4,
+
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 1,
+        shadowRadius: 3,
     },
     section_card4: {
 
         width: '80%',
-        height: 180,
+        height: 150,
         alignItems: "center",
         justifyContent: "space-between",
         padding: 16,
-        backgroundColor: "#4F585C",
+        backgroundColor: "#98A2A6",
         borderRadius: 8,
-        alignSelf: 'center'
+        alignSelf: 'center',
+        elevation: 4,
+
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 1,
+        shadowRadius: 3,
     },
     
     section__texto3: {
@@ -107,10 +144,10 @@ export const PainelNotificacoesStyle = StyleSheet.create({
 
 
     },
-    Data_Hora: {
-        flexDirection: "row",
-        alignItems: "center",
-        gap: 260
-    },
-
+  Data_Hora: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    width: "100%",
+},
 })

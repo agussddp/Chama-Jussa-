@@ -9,13 +9,14 @@ export const minhaOSStyle = StyleSheet.create({
     Text: {
         fontSize: 18,
         fontWeight: '400',
-        marginTop: 20,
+        marginTop: 10,
         color: '#282F32',
         marginBottom: 16,
-        textAlign: 'center'
+        textAlign: 'left',
+        marginLeft: 8
     },
     section__texto1: {
-        fontSize: 20,
+        fontSize: 18,
         fontWeight: '600',
         marginTop: 10,
         color: 'black',
@@ -48,11 +49,11 @@ export const minhaOSStyle = StyleSheet.create({
     section_card2: {
 
         width: '80%',
-        height: 340,
+        height: 232,
         alignItems: "center",
         justifyContent: "space-between",
         padding: 16,
-        backgroundColor: "#4F585C",
+        backgroundColor: "#98A2A6",
         borderRadius: 8,
         marginTop: 20,
         alignSelf: 'center'
@@ -62,7 +63,7 @@ export const minhaOSStyle = StyleSheet.create({
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "space-between",
-        marginTop: 10,
+        marginTop: 30,
     },
     header_card: {
         width: "100%",
@@ -118,33 +119,34 @@ export const minhaOSStyle = StyleSheet.create({
         justifyContent: "center",
     },
     user__button4: {
-        width: 100,
+        width: 110,
         height: 40,
         borderRadius: 8,
         backgroundColor: "#4F585C",
-        // boxShadow: 5,
+        // // boxShadow: 5,
         color: "#FFF",
         alignItems: "center",
         justifyContent: "center",
         marginTop: 10,
         alignSelf: 'flex-start'
+        // alignSelf: 'flex-start',
         // borderColor: "red",
         // borderWidth: 2,
         // borderStyle: "solid"
 
     },
     user__button5: {
-        height: 40,
+        height: 35,
         width: 100,
         borderRadius: 8,
-        backgroundColor: "#754446",
+        backgroundColor: "#C0191F40",
         alignItems: "center",
         justifyContent: "center",
     },
 
 
     button_text: {
-        color: "#282F32",
+        color: "#98A2A6",
         fontSize: 17,
         fontWeight: '400',
         alignSelf: "center"
@@ -158,7 +160,7 @@ export const minhaOSStyle = StyleSheet.create({
     button_text1: {
         color: "#fff",
         fontSize: 15,
-        fontWeight: "700",
+        fontWeight: "600",
         textAlign: "center",
         alignSelf: "center",
     },

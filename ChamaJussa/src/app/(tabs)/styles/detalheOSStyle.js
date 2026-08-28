@@ -9,7 +9,7 @@ export const DetalheOSStyle = StyleSheet.create({
     Text: {
         fontSize: 20,
         fontWeight: '700',
-        marginTop: 20,
+        marginTop: 30,
         color:'#C0191F' ,
         marginBottom: 16,
         textAlign: 'center'
@@ -17,17 +17,18 @@ export const DetalheOSStyle = StyleSheet.create({
     section_card: {
        
         width: '80%',
-        height: 1030,
+        height: 630,
         alignItems: "center",
         justifyContent: "space-between",
         padding: 16,
-        backgroundColor: "#4F585C",
+        backgroundColor: "#98A2A6",
         borderRadius: 8,
-        alignSelf: 'center'
+        alignSelf: 'center',
+        marginBottom: 12
     },
     figure_section__img: {
-        width: 300,
-        height: 240,
+        width: 250,
+        height: 140,
         // resizeMode: "contain",
         borderRadius: 10,
         // flex: 1,
@@ -35,8 +36,9 @@ export const DetalheOSStyle = StyleSheet.create({
         // justifyContent: 'center'
     },
     figure_section__img2: {
-        width: '80%',
-        height: 3,
+        width: '88%',
+        height: 2,
+        marginTop: 7,
         // resizeMode: "contain",
         borderRadius: 10,
         // flex: 1,
@@ -44,7 +46,7 @@ export const DetalheOSStyle = StyleSheet.create({
         // justifyContent: 'center'
     },
     section__texto1: {
-        fontSize: 26,
+        fontSize: 24,
         fontWeight: '600',
         marginTop: 20,
         color: 'black', 
@@ -56,7 +58,7 @@ export const DetalheOSStyle = StyleSheet.create({
         fontSize: 18,
         color: 'black',
         marginBottom: 3,
-        textAlign: 'center',
+        textAlign: 'left',
         fontWeight: '500',
         
         
@@ -65,7 +67,7 @@ export const DetalheOSStyle = StyleSheet.create({
         fontSize: 18,
         color: '#282F32',
         marginBottom: 3,
-        textAlign: 'center',
+        textAlign: 'left',
         
         
     },
@@ -100,8 +102,9 @@ export const DetalheOSStyle = StyleSheet.create({
 
 info_icon: {
 //    backgroundColor: "blue",
-    width:30,
-    height: 30,
+    width:20,
+    height: 20,
+    marginRight: 9
 },
 
 info_content: {

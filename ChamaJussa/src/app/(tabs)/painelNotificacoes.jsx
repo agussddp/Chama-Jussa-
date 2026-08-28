@@ -1,6 +1,6 @@
 import { Text, View } from "react-native";
 import { PainelNotificacoesStyle } from "./styles/painelNotificacoesStyle";
-import { Footer } from "../../components/footer/Footer"
+
 import { ScrollView } from "react-native";
 import { Image } from "react-native";
 
@@ -151,7 +151,7 @@ export default function PainelNotificacoes() {
                 </View>
 
             </ScrollView>
-            {/* <Footer /> */}
+        
         </View>
     )
 }

@@ -2,7 +2,8 @@ import { Text, TouchableOpacity, View } from "react-native"
 import { CriarOSStyle } from "./styles/CriarOSStyle"
 import { TextInput } from "react-native"
 import { useState } from "react"
-import { Footer } from "../../components/footer/Footer"
+
+import { Link } from "expo-router"
 
 export default function CriarOS() {
 
@@ -47,15 +48,16 @@ export default function CriarOS() {
                     <Text style={CriarOSStyle.PlaceholderText}>Insira imagem</Text>
                 </TouchableOpacity>
 
-                
+                <Link href="/" asChild>
                     <TouchableOpacity style={CriarOSStyle.Button}>
                         <Text style={CriarOSStyle.ButtonText}>Abrir Ordem de Serviço</Text>
                     </TouchableOpacity>
+                </Link>
                
 
             </View>
 
-            {/* <Footer/> */}
+          
         </View>
     )
 }

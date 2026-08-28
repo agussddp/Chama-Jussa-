@@ -23,12 +23,12 @@ export const LoginStyle = StyleSheet.create({
   },
   section_card: {
     width: 300,
-    height: 340,
+    height: 350,
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "column",
     padding: 16,
-    backgroundColor: "#4F585C",
+    backgroundColor: "#98A2A6",
     borderRadius: 8,
   },
   header_section: {
@@ -48,8 +48,8 @@ export const LoginStyle = StyleSheet.create({
    
   },
   header_section__subtitulo: {
-    fontSize: 12,
-    color: "rgba(0, 0, 0, 0.67)",
+    fontSize: 15,
+    color: "#7D1416",
   },
   login_user: {
     width: "100%",
@@ -88,12 +88,23 @@ export const LoginStyle = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     marginTop: 5,
+    elevation: 4,
+
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 1,
+        shadowRadius: 3,
     
   },
   login_cadastro : {
     color: "#282F32",
     fontWeight: 500,
     fontSize: 13,
+    marginTop: 15,
+    
   },
   login_user__button_text : {
     color: "#FFF",

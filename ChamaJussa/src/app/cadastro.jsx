@@ -58,7 +58,6 @@ export default function Cadastro({ navigation }) {
                     <Link href="/perfil" asChild>
                         <TouchableOpacity
                             style={CadastroStyle.login_user__button}
-                            onPress={() => navigation.navigate('CriarOS')}
                         >
                             <Text style={CadastroStyle.login_user__button_text}>Acessar o sistema</Text>
                         </TouchableOpacity>

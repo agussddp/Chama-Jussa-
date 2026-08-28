@@ -5,30 +5,32 @@ export const CriarOSStyle = StyleSheet.create({
         flex: 1,
         backgroundColor: '#282F32',
         alignItems: 'center',
-        justifyContent: "space-between"
+        justifyContent: "flex-start"
     },
     
     Text: {
-        fontSize: 18,
+        fontSize: 20,
         fontWeight: '700',
-        marginTop: 20,
+        marginTop: 30,
         color:'#C0191F' ,
         marginBottom: 16,
         textAlign: 'center',
         
     },
+
     
     cardProblema: {
         width: '80%',
-        height: '78%',
+        height: '75%',
         backgroundColor: 'white',
         borderRadius: 10,
         padding: 10,
-        backgroundColor: '#4F585C',
+        backgroundColor: '#98A2A6',
+          marginTop: 35,
     },
     Label: {
         paddingLeft: 3,
-        fontSize: 12,
+        fontSize: 15,
         fontWeight: '500',
         marginBottom: 8,
         marginTop: 16,
@@ -56,7 +58,7 @@ export const CriarOSStyle = StyleSheet.create({
     },
     PlaceholderText: {
         color: '#999',
-        fontSize: 14,
+        fontSize: 15,
     },
     Button: {
         backgroundColor: '#C0191F',
@@ -64,6 +66,15 @@ export const CriarOSStyle = StyleSheet.create({
         paddingVertical: 16,
         alignItems: 'center',
         marginTop: 28,
+        elevation: 4,
+
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 1,
+        shadowRadius: 3,
     },
     ButtonText: {
         color: '#FFFFFF',

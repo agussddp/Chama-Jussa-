@@ -1,8 +1,11 @@
 import { Text, View, Image, TouchableOpacity, ScrollView } from "react-native";
-import { DetalheOSStyle } from "./styles/detalheOSStyle";
-import { Footer } from "../../components/footer/Footer";
+import { DetalheOSStyle } from "../styles/detalheOSStyle";
+import { useLocalSearchParams } from "expo-router";
 
-export default function DetalheOS () {
+
+export default function DetalheOS() {
+    const {id, titulo, descricao, local, solicitante} = useLocalSearchParams();
+
     return (
         <View style={DetalheOSStyle.Container}>
 
@@ -19,7 +22,7 @@ export default function DetalheOS () {
                     <View style={DetalheOSStyle.info_row}>
                         <Image
                             style={DetalheOSStyle.info_icon}
-                            source={require("../../../assets/Ferramenta.png")}
+                            source={require("../../../../assets/Ferramenta.png")}
                         />
 
                         <View style={DetalheOSStyle.caixaTextos}>
@@ -37,7 +40,7 @@ export default function DetalheOS () {
                     <View style={DetalheOSStyle.info_row}>
                         <Image
                             style={DetalheOSStyle.info_icon}
-                            source={require("../../../assets/Loc.png")}
+                            source={require("../../../../assets/Loc.png")}
                         />
 
                         <View style={DetalheOSStyle.caixaTextos}>
@@ -46,7 +49,7 @@ export default function DetalheOS () {
                             </Text>
 
                             <Text style={DetalheOSStyle.section__texto2}>
-                                Bloco B - 2º Andar
+                                {local}
                             </Text>
                         </View>
                     </View>
@@ -55,7 +58,7 @@ export default function DetalheOS () {
                     <View style={DetalheOSStyle.info_row}>
                         <Image
                             style={DetalheOSStyle.info_icon}
-                            source={require("../../../assets/Pessoa.png")}
+                            source={require("../../../../assets/Pessoa.png")}
                         />
 
                         <View style={DetalheOSStyle.caixaTextos}>
@@ -64,7 +67,7 @@ export default function DetalheOS () {
                             </Text>
 
                             <Text style={DetalheOSStyle.section__texto2}>
-                                Beatriz Andrade
+                                {solicitante}
                             </Text>
                         </View>
                     </View>
@@ -77,7 +80,7 @@ export default function DetalheOS () {
 
                     <Image
                         style={DetalheOSStyle.figure_section__img2}
-                        source={require("../../../assets/Line.png")}
+                        source={require("../../../../assets/Line.png")}
                     />
 
                     <Text style={DetalheOSStyle.section__texto1}>
@@ -85,10 +88,7 @@ export default function DetalheOS () {
                     </Text>
 
                     <Text style={DetalheOSStyle.section__texto3}>
-                        Foi identificada uma cadeira quebrada no Bloco B no
-                        2º Andar, apresentando danos que comprometem sua
-                        utilização e segurança. Solicita-se a avaliação e,
-                        se necessário, o reparo ou substituição da cadeira.
+                      {descricao}
                     </Text>
 
                     <Text style={DetalheOSStyle.section__texto1}>
@@ -97,22 +97,21 @@ export default function DetalheOS () {
 
                     <Image
                         style={DetalheOSStyle.figure_section__img}
-                        source={require("../../../assets/Cadeira-quebrada.png")}
+                        source={require("../../../../assets/Cadeira-quebrada.png")}
                     />
 
                 </View>
-         
+
                 <TouchableOpacity style={DetalheOSStyle.user__button}>
                     <Text style={DetalheOSStyle.button_text}>
                         Editar Solicitação
                     </Text>
                 </TouchableOpacity>
-              
+
 
             </ScrollView>
 
-            {/* // <Footer /> */}
-
+      
         </View>
     );
 };

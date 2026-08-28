@@ -1,8 +1,7 @@
 import { Text, View, Image, TouchableOpacity, ScrollView } from "react-native";
-import { DetalheOSStyle } from "./detalheOSStyle";
-import { Footer } from "../../components/footer/Footer";
+import { DetalheOSStyle } from "./(tabs)/styles/detalheOSStyle";
 
-export const DetalheOS = () => {
+export default function DetalheOS () {
     return (
         <View style={DetalheOSStyle.Container}>
 
@@ -19,7 +18,7 @@ export const DetalheOS = () => {
                     <View style={DetalheOSStyle.info_row}>
                         <Image
                             style={DetalheOSStyle.info_icon}
-                            source={require("../../../assets/Ferramenta.png")}
+                            source={require("../../assets/Ferramenta.png")}
                         />
 
                         <View style={DetalheOSStyle.caixaTextos}>
@@ -37,7 +36,7 @@ export const DetalheOS = () => {
                     <View style={DetalheOSStyle.info_row}>
                         <Image
                             style={DetalheOSStyle.info_icon}
-                            source={require("../../../assets/Loc.png")}
+                            source={require("../../assets/Loc.png")}
                         />
 
                         <View style={DetalheOSStyle.caixaTextos}>
@@ -55,7 +54,7 @@ export const DetalheOS = () => {
                     <View style={DetalheOSStyle.info_row}>
                         <Image
                             style={DetalheOSStyle.info_icon}
-                            source={require("../../../assets/Pessoa.png")}
+                            source={require("../../assets/Pessoa.png")}
                         />
 
                         <View style={DetalheOSStyle.caixaTextos}>
@@ -77,7 +76,7 @@ export const DetalheOS = () => {
 
                     <Image
                         style={DetalheOSStyle.figure_section__img2}
-                        source={require("../../../assets/Line.png")}
+                        source={require("../../assets/Line.png")}
                     />
 
                     <Text style={DetalheOSStyle.section__texto1}>
@@ -97,20 +96,21 @@ export const DetalheOS = () => {
 
                     <Image
                         style={DetalheOSStyle.figure_section__img}
-                        source={require("../../../assets/Cadeira-quebrada.png")}
+                        source={require("../../assets/Cadeira-quebrada.png")}
                     />
 
                 </View>
-
+         
                 <TouchableOpacity style={DetalheOSStyle.user__button}>
                     <Text style={DetalheOSStyle.button_text}>
                         Editar Solicitação
                     </Text>
                 </TouchableOpacity>
+              
 
             </ScrollView>
 
-            <Footer />
+           
 
         </View>
     );
