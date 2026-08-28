@@ -39,8 +39,8 @@ namespace Chama_Jussa.API.Controller
                 var claims = new[]
                 {
                 new Claim(JwtRegisteredClaimNames.Jti, usuarioBuscado.IdUsuario),
-                new Claim(JwtRegisteredClaimNames.Email, usuarioBuscado.Email!)
-
+                new Claim(JwtRegisteredClaimNames.Email, usuarioBuscado.Email!),
+                new Claim(ClaimTypes.Role, usuarioBuscado.TipoUsuario!)
 
             };
 

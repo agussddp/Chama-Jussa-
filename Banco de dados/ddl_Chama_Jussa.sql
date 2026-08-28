@@ -7,7 +7,8 @@ ID_Usuario VARCHAR(40) PRIMARY KEY NOT NULL
 ,email			 NVARCHAR(255)	UNIQUE	NOT NULL
 ,senha			 NVARCHAR(100)			NOT NULL
 ,foto_perfil_url NVARCHAR(150)			NULL
-
+,tipo_usuario NVARCHAR(20) NOT NULL DEFAULT 'Comum'
+    CONSTRAINT CK_tipo_usuario CHECK (tipo_usuario IN ('Comum', 'Administrador'))
 
 )
 
@@ -26,5 +27,6 @@ ID_Chamado VARCHAR(40) PRIMARY KEY NOT NULL
 ,ID_Usuario	VARCHAR(40)		FOREIGN KEY REFERENCES Tb_Usuario (ID_Usuario)
 
 )
+
 
 

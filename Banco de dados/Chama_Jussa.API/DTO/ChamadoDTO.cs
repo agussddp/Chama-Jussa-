@@ -1,4 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Chama_Jussa.API.Enum;
+
 
 namespace Chama_Jussa.API.DTO
 {
@@ -18,6 +20,6 @@ namespace Chama_Jussa.API.DTO
         public string? Localizacao { get; set; }
 
         [Required(ErrorMessage = "O Status do chamado é obrigatório!")]
-        public string? StatusOs { get; set; }
+        public StatusOs StatusOs { get; set; }
     }
 }

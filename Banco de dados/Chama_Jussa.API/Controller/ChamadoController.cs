@@ -4,6 +4,8 @@ using Chama_Jussa.API.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 using static System.Net.WebRequestMethods;
 
 namespace Chama_Jussa.API.Controller
@@ -24,8 +26,21 @@ namespace Chama_Jussa.API.Controller
         [HttpGet]
         public IActionResult Get()
         {
+
+
+
+
             try
             {
+                var idUsuarioLogado = User.FindFirst(JwtRegisteredClaimNames.Jti)?.Value;
+                var tipoUsuario = User.FindFirst(ClaimTypes.Role)?.Value;
+
+                var chamados = tipoUsuario == "Administrador"
+                    ? _chamadoRepository.Listar()
+                    : _chamadoRepository.ListarPorUsuario(idUsuarioLogado!);
+
+
+
                 return Ok(_chamadoRepository.Listar());
 
             }
@@ -55,6 +70,12 @@ namespace Chama_Jussa.API.Controller
         [HttpPost]
         public async Task<IActionResult> Post([FromForm] ChamadoDTO novoChamado)
         {
+
+
+            var usuarioId = User.FindFirst(JwtRegisteredClaimNames.Jti)?.Value; 
+            if (usuarioId == null)
+                return Unauthorized("Usuário não identificado.");
+
             if (string.IsNullOrEmpty(novoChamado.Titulo) ||
                 string.IsNullOrEmpty(novoChamado.Localizacao)
                 )
@@ -92,6 +113,7 @@ namespace Chama_Jussa.API.Controller
             chamado.Localiza = novoChamado.Localizacao;
             chamado.Descricao = novoChamado.Descricao ?? "";
             chamado.Equipamento = novoChamado.Equipamento;
+            chamado.IdUsuario = usuarioId;
 
 
             chamado.StatusOs = "Aberta";
@@ -112,6 +134,7 @@ namespace Chama_Jussa.API.Controller
 
 
         [HttpPut("{id}")]
+        [Authorize(Roles = "Administrador")]
         public async Task<IActionResult> Put(Guid id, ChamadoDTO chamado)
         {
 
@@ -121,13 +144,18 @@ namespace Chama_Jussa.API.Controller
             if (ChamadoBuscado == null)
                 return NotFound("Chamado não encontrado");
 
-            if (ChamadoBuscado.StatusOs != "Aberta")
+
+            var ehAdministrador = User.IsInRole("Administrador");
+
+
+            // Usuário comum só edita OS aberta
+            if (!ehAdministrador && ChamadoBuscado.StatusOs != "Aberta")
             {
-                return BadRequest("Só é possível editar chamados que estão em andamento.");
+                return BadRequest("Usuários comuns só podem editar chamados em aberto.");
             }
 
-            if (!string.IsNullOrWhiteSpace(chamado.StatusOs))
-                ChamadoBuscado.StatusOs = chamado.StatusOs;
+            // Atualiza o status convertendo enum para string
+            ChamadoBuscado.StatusOs = chamado.StatusOs.ToString();
 
 
             if (ChamadoBuscado == null)
@@ -145,9 +173,8 @@ namespace Chama_Jussa.API.Controller
             if (!string.IsNullOrWhiteSpace(chamado.Equipamento))
                 ChamadoBuscado.Equipamento = chamado.Equipamento;
 
-            // Altera o status
-            if (!string.IsNullOrWhiteSpace(chamado.StatusOs))
-                ChamadoBuscado.StatusOs = chamado.StatusOs;
+            // Altera o status convertendo enum para string
+            ChamadoBuscado.StatusOs = chamado.StatusOs.ToString();
 
             if (chamado.Foto_OS != null && chamado.Foto_OS.Length != 0)
             {
@@ -202,6 +229,7 @@ namespace Chama_Jussa.API.Controller
 
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Administrador")]
         public IActionResult Delete(Guid id)
         {
             var ChamadoBuscado = _chamadoRepository.BuscarPorId(id);

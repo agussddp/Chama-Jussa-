@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Chama_Jussa.API.Enum;
 
 namespace Chama_Jussa.API.DTO
 {
@@ -10,8 +11,9 @@ namespace Chama_Jussa.API.DTO
         [Required(ErrorMessage = "A Senha do usuário é obrigatória!")]
         public string? Senha { get; set; }
 
-        [Required(ErrorMessage = "A Foto do usuário é obrigatória!")]
         public IFormFile? Foto_usuario { get; set; }
+
+        public TipoUsuario TipoUsuario { get; set; }
 
 
         public string? Nome { get; set; }

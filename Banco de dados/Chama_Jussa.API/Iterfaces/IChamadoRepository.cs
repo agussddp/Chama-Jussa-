@@ -12,6 +12,8 @@ namespace Chama_Jussa.API.Iterfaces
 
         void AtualizarIdUrl(Guid id, TbChamado filmeAtualizado);
 
+        IEnumerable<TbChamado> ListarPorUsuario(string idUsuario);
+
         void Deletar(Guid id);
         TbChamado BuscarPorId(Guid id);
     }

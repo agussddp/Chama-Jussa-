@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi;
+using System.Security.Claims;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -35,7 +36,9 @@ builder.Services.AddAuthentication(options =>
 
             ValidIssuer = "api_ChamaJussa",
 
-            ValidAudience = "api_ChamaJussa"
+            ValidAudience = "api_ChamaJussa",
+
+            RoleClaimType = ClaimTypes.Role
         };
     });
 
@@ -88,11 +91,17 @@ builder.Services.AddCors(options =>
     });
 
 
-    builder.Services.AddControllers();
+    builder.Services.AddControllers()
+  .AddJsonOptions(options =>
+   {
+       options.JsonSerializerOptions.Converters.Add(
+           new System.Text.Json.Serialization.JsonStringEnumConverter()
+       );
+   });
 
 
-    // Adiciona serviço de Controllers
-    var app = builder.Build();
+// Adiciona serviço de Controllers
+var app = builder.Build();
 
     if (app.Environment.IsDevelopment())
     {
@@ -116,8 +125,9 @@ builder.Services.AddCors(options =>
 
 
 
-    //Adiciona o mapeamento de controles
-    app.MapControllers();
+
+//Adiciona o mapeamento de controles
+app.MapControllers();
 
     app.Run();
 

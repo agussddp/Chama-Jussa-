@@ -15,6 +15,7 @@ namespace Chama_Jussa.API.Repositories
         _context = context;
     }
 
+    
         public TbUsuario BuscarPorEmailESenha(string email, string senha)
         {
             try
@@ -86,6 +87,41 @@ namespace Chama_Jussa.API.Repositories
             catch (Exception)
             {
 
+                throw;
+            }
+        }
+
+        public List<TbUsuario> Listar()
+        {
+            try
+            {
+                List<TbUsuario> listaUsuarios = _context.TbUsuarios.ToList();
+                return listaUsuarios;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public void Atualizar(TbUsuario usuario)
+        {
+            try
+            {
+                if (usuario == null) return;
+
+                // Se a senha vier preenchida, gerar hash (ajuste conforme sua regra de negócios)
+                if (!string.IsNullOrWhiteSpace(usuario.Senha))
+                {
+                    usuario.Senha = Criptografia.GerarHash(usuario.Senha);
+                }
+
+                _context.TbUsuarios.Update(usuario);
+                _context.SaveChanges();
+            }
+            catch (Exception)
+            {
                 throw;
             }
         }

@@ -1,5 +1,6 @@
 ﻿using Chama_Jussa.API.Iterfaces;
 using Chama_Jussa.API.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Chama_Jussa.API.Repositories
 {
@@ -60,7 +61,9 @@ namespace Chama_Jussa.API.Repositories
             try
             {
                 TbChamado ChamadoBuscado = _context.TbChamados.Find(id.ToString())!;
-                return ChamadoBuscado;
+                return _context.TbChamados
+                .Include(c => c.IdUsuarioNavigation)
+                .FirstOrDefault(c => c.IdChamado == id.ToString());
             }
             catch (Exception)
             {
@@ -116,6 +119,13 @@ namespace Chama_Jussa.API.Repositories
 
                 throw;
             }
+        }
+
+        public IEnumerable<TbChamado> ListarPorUsuario(string idUsuario)
+        {
+            return _context.TbChamados
+                .Where(c => c.IdUsuario == idUsuario)
+                .ToList();
         }
     }
 }

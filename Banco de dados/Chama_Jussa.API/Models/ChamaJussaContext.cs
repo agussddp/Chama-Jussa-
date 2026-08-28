@@ -84,7 +84,12 @@ public partial class ChamaJussaContext : DbContext
                 .HasColumnName("nome_completo");
             entity.Property(e => e.Senha)
                 .HasMaxLength(100)
+                .IsUnicode(false)
                 .HasColumnName("senha");
+            entity.Property(e => e.TipoUsuario)
+                .HasMaxLength(20)
+                .HasDefaultValue("Comum")
+                .HasColumnName("tipo_usuario");
         });
 
         OnModelCreatingPartial(modelBuilder);
