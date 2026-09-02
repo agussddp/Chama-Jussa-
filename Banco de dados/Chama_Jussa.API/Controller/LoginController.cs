@@ -67,7 +67,16 @@ namespace Chama_Jussa.API.Controller
 
                 return Ok(new
                 {
-                    token = new JwtSecurityTokenHandler().WriteToken(token)
+                    token = new JwtSecurityTokenHandler().WriteToken(token),
+
+
+                    usuario = new
+                    {
+                        idUsuario = usuarioBuscado.IdUsuario,
+                        nomeCompleto = usuarioBuscado.NomeCompleto,
+                        email = usuarioBuscado.Email,
+                        fotoPerfilUrl = usuarioBuscado.FotoPerfilUrl
+                    }
                 });
 
             }

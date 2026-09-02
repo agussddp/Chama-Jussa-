@@ -13,7 +13,6 @@ namespace Chama_Jussa.API.DTO
 
         public string? Equipamento { get; set; }
 
-        [Required(ErrorMessage = "A Foto do usuário é obrigatória!")]
         public IFormFile? Foto_OS { get; set; }
 
         [Required(ErrorMessage = "O Nome do usuário é obrigatória!")]

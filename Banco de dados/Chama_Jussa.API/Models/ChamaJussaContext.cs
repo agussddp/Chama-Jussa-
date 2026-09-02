@@ -27,7 +27,7 @@ public partial class ChamaJussaContext : DbContext
     {
         modelBuilder.Entity<TbChamado>(entity =>
         {
-            entity.HasKey(e => e.IdChamado).HasName("PK__tb_Chama__3592CFDD2C86E2E4");
+            entity.HasKey(e => e.IdChamado).HasName("PK__tb_Chama__3592CFDD2209A2D3");
 
             entity.ToTable("tb_Chamado");
 
@@ -53,21 +53,21 @@ public partial class ChamaJussaContext : DbContext
             entity.Property(e => e.Localiza).HasMaxLength(100);
             entity.Property(e => e.StatusOs)
                 .HasMaxLength(30)
-                .HasColumnName("status_OS");
+                .HasColumnName("Status_OS");
             entity.Property(e => e.Titulo).HasMaxLength(100);
 
             entity.HasOne(d => d.IdUsuarioNavigation).WithMany(p => p.TbChamados)
                 .HasForeignKey(d => d.IdUsuario)
-                .HasConstraintName("FK__tb_Chamad__ID_Us__5FB337D6");
+                .HasConstraintName("FK__tb_Chamad__ID_Us__4E88ABD4");
         });
 
         modelBuilder.Entity<TbUsuario>(entity =>
         {
-            entity.HasKey(e => e.IdUsuario).HasName("PK__tb_Usuar__DE4431C5EBD194C8");
+            entity.HasKey(e => e.IdUsuario).HasName("PK__tb_Usuar__DE4431C5829B437F");
 
             entity.ToTable("tb_Usuario");
 
-            entity.HasIndex(e => e.Email, "UQ__tb_Usuar__AB6E6164B0595951").IsUnique();
+            entity.HasIndex(e => e.Email, "UQ__tb_Usuar__AB6E61645DC4D9CB").IsUnique();
 
             entity.Property(e => e.IdUsuario)
                 .HasMaxLength(40)
@@ -84,7 +84,6 @@ public partial class ChamaJussaContext : DbContext
                 .HasColumnName("nome_completo");
             entity.Property(e => e.Senha)
                 .HasMaxLength(100)
-                .IsUnicode(false)
                 .HasColumnName("senha");
             entity.Property(e => e.TipoUsuario)
                 .HasMaxLength(20)
