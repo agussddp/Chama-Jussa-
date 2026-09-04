@@ -15,6 +15,6 @@ namespace Chama_Jussa.API.Iterfaces
         IEnumerable<TbChamado> ListarPorUsuario(string idUsuario);
 
         void Deletar(Guid id);
-        TbChamado BuscarPorId(Guid id);
+        TbChamado? BuscarPorId(Guid id);
     }
 }

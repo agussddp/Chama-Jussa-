@@ -60,7 +60,7 @@ namespace Chama_Jussa.API.Repositories
         {
             try
             {
-                TbChamado ChamadoBuscado = _context.TbChamados.Find(id.ToString())!;
+              
                 return _context.TbChamados
                 .Include(c => c.IdUsuarioNavigation)
                 .FirstOrDefault(c => c.IdChamado == id.ToString());
@@ -109,16 +109,12 @@ namespace Chama_Jussa.API.Repositories
 
         public List<TbChamado> Listar()
         {
-            try
-            {
-                List<TbChamado> listaChamados = _context.TbChamados.ToList();
-                return listaChamados;
-            }
-            catch (Exception)
-            {
+            var chamados = _context.TbChamados
+                .Include(c => c.IdUsuarioNavigation)
+                .ToList();
 
-                throw;
-            }
+
+            return chamados;
         }
 
         public IEnumerable<TbChamado> ListarPorUsuario(string idUsuario)

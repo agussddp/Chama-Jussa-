@@ -1,49 +1,67 @@
-import { Text, View, Image, TouchableOpacity, ScrollView } from "react-native";
+import { Text, View, Image, TouchableOpacity, ScrollView, ActivityIndicator } from "react-native";
 import { DetalheOSStyle } from "./(tabs)/styles/detalheOSStyle";
 import { useLocalSearchParams, useRouter } from "expo-router";
-import { useState } from "react";
-import { ActivityIndicator } from "react-native/types_generated/index";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
 
 export default function DetalheOS() {
 
-    const { id } = useLocalSearchParams();
+    const {
+        id,
+        titulo,
+        descricao,
+        local,
+        solicitante,
+        equipamento,
+        fotoOsUrl
+    } = useLocalSearchParams();
+
+
 
     const [os, setOs] = useState(null);
     const [carregando, setCarregando] = useState(true);
 
     useEffect(() => {
-        buscarOS();
-    }, []);
+        const buscarOS = async () => {
+            try {
 
+                const token = await AsyncStorage.getItem("token");
 
-    const buscarOS = async () => {
-        try {
-
-            const token = await AsyncStorage.getItem("token");
-
-            const resposta = await axios.get(
-                `http://192.168.0.244:5000/api/Chamado/${id}`,
-                {
-                    headers: {
-                        Authorization: `Bearer ${token}`
+                const respose = await axios.get(
+                    `http://172.16.1.179:8081/api/Chamado/${id}`,
+                    {
+                        headers: {
+                            Authorization: `Bearer ${token}`
+                        }
                     }
-                }
-            );
+                );
 
-            console.log("OS RECEBIDA:", resposta.data);
 
-            setOs(resposta.data);
 
-        } catch (error) {
+                console.log("OS por id", reponse.data);
 
-            console.log(
-                "ERRO AO BUSCAR OS:",
-                error.response?.data || error
-            );
-        } finally {
-            setCarregando(false);
+             
+
+            } catch (error) {
+                console.log("ERRO:", error);
+            }
         }
-    }
+
+
+        if (id) {
+            buscarOS();
+        }
+    }, [id]);
+
+
+
+
+    setOs(resposta.data[0]);
+
+
+
 
     if (carregando) {
 
@@ -92,7 +110,7 @@ export default function DetalheOS() {
                             </Text>
 
                             <Text style={DetalheOSStyle.section__texto2}>
-                                Cadeira quebrada
+                                {os.equipamento || "Não informado"}
                             </Text>
                         </View>
                     </View>
@@ -110,7 +128,7 @@ export default function DetalheOS() {
                             </Text>
 
                             <Text style={DetalheOSStyle.section__texto2}>
-                                {os.localizacao}
+                                {os.localiza}
                             </Text>
 
                         </View>
@@ -129,7 +147,7 @@ export default function DetalheOS() {
                             </Text>
 
                             <Text style={DetalheOSStyle.section__texto2}>
-                                Beatriz Andrade
+                                {os.idUsuarioNavigation?.nomeCompleto}
                             </Text>
                         </View>
                     </View>
@@ -150,7 +168,7 @@ export default function DetalheOS() {
                     </Text>
 
                     <Text style={DetalheOSStyle.section__texto3}>
-                       {os.descricao}
+                        {os.descricao}
                     </Text>
 
                     <Text style={DetalheOSStyle.section__texto1}>
@@ -159,7 +177,7 @@ export default function DetalheOS() {
 
                     <Image
                         style={DetalheOSStyle.figure_section__img}
-                        source={require("../../assets/Cadeira-quebrada.png")}
+                        source={{ uri: `http://172.16.1.179:8081/imagens/${fotoOsUrl}` }}
                     />
 
                 </View>

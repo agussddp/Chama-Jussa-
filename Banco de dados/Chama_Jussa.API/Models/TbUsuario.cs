@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace Chama_Jussa.API.Models;
 
@@ -17,5 +18,6 @@ public partial class TbUsuario
 
     public string TipoUsuario { get; set; } = null!;
 
+    [JsonIgnore]
     public virtual ICollection<TbChamado> TbChamados { get; set; } = new List<TbChamado>();
 }

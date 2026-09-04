@@ -58,7 +58,15 @@
 
                 try
                 {
-                    return Ok(_chamadoRepository.BuscarPorId(id));
+                var chamado = _chamadoRepository.BuscarPorId(id);
+
+                if (chamado == null)
+                {
+                    return NotFound("Chamado não encontrado.");
+                    
+                }
+
+                return Ok(_chamadoRepository.BuscarPorId(id));
                 }
                 catch (Exception e)
                 {
@@ -255,7 +263,7 @@
 
                     return NoContent();
 
-
+                x
                 }
                 catch (Exception e)
                 {

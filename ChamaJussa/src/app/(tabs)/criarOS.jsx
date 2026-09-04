@@ -1,4 +1,4 @@
-import { Text, TouchableOpacity, View } from "react-native"
+import { Image, Text, TouchableOpacity, View } from "react-native"
 import { CriarOSStyle } from "./styles/CriarOSStyle"
 import { TextInput } from "react-native"
 import { useState } from "react"
@@ -24,30 +24,31 @@ export default function CriarOS() {
 
             const token = await AsyncStorage.getItem("token");
 
-            const fromData = new FormData();
+            const fromdata = new FormData();
 
-            fromData.append("Titulo", titulo);
-            fromData.append("Descricao", descricao);
-            fromData.append("Equipamento", equipamento);
-            fromData.append("Localizacao", localiza);
+            fromdata.append("Titulo", titulo);
+            fromdata.append("Descricao", descricao);
+            fromdata.append("Equipamento", equipamento);
+            fromdata.append("Localizacao", localiza);
 
             if (foto) {
 
                 console.log("foto selecionada", foto);
 
-                const resposta = await fetch(foto.uri);
-                const blob = await resposta.blob()
-
-                fromData.append("Foto_OS",blob, foto.fileName || "foto.jpg")
+                fromdata.append("Foto_OS", { 
+                    uri: foto.uri, 
+                    name: foto.fileName || "foto.jpg",
+                    type: foto.mimeType || "image/jpeg", });
 
                 console.log("imagem adicionada ao fromdata");
-                
+
 
             }
 
-            const response = await axios.post("http://192.168.0.244:5000/api/Chamado", fromData, {
+            const response = await axios.post("http://172.16.1.179:5228/api/Chamado", fromdata, {
                 headers: {
                     Authorization: `Bearer ${token}`,
+                    "Content-Type": "multipart/form-data",
                 },
             }
             );
@@ -66,9 +67,32 @@ export default function CriarOS() {
     };
 
 
+    const tirarFoto = async () => {
+    const permissao = await ImagePicker.requestCameraPermissionsAsync();
+
+    if (!permissao.granted) {
+        alert("Permissão para usar a câmera é necessária.");
+        return;
+    }
+
+    const resultado = await ImagePicker.launchCameraAsync({
+        allowsEditing: true,
+        quality: 0.8,
+    });
+
+    console.log("Resultado câmera:", resultado);
+
+    if (!resultado.canceled) {
+        console.log("FOTO TIRADA:", resultado.assets[0]);
+        setFoto(resultado.assets[0]);
+    }
+};
+
+
+
 
     const selecionarFoto = async () => {
-        
+
 
 
         const resultado = await ImagePicker.launchImageLibraryAsync({
@@ -142,9 +166,11 @@ export default function CriarOS() {
                 />
 
                 <Text style={CriarOSStyle.Label}>Imagem / Foto do problema *</Text>
-                <TouchableOpacity style={CriarOSStyle.Input} onPress={selecionarFoto}>
+                <TouchableOpacity style={CriarOSStyle.Input} onPress={tirarFoto}>
                     <Text style={CriarOSStyle.PlaceholderText}>{foto ? "Imagem selecionada" : "Insira Imagem"}</Text>
                 </TouchableOpacity>
+
+              
 
 
                 <TouchableOpacity style={CriarOSStyle.Button} onPress={criarChamado}>

@@ -20,7 +20,7 @@ export default () => {
                 const token = await AsyncStorage.getItem("token");
 
                 const response = await axios.get(
-                    "http://192.168.0.244:5000/api/Chamado",
+                    "http://172.16.1.179:5228/api/Chamado",
                     {
                         headers: {
                             Authorization: `Bearer ${token}`,
@@ -106,26 +106,32 @@ export default () => {
                 </View>
 
                 {listaOS.map((os) => {
+                      {console.log(os)}
+                      console.log("FOTO RECEBIDA DO GET:", os.fotoOsUrl);
                     return (
-                        <TouchableOpacity 
-                        key={os.idChamado} 
-                        onPress={() => {
-                            router.push({
-                                pathname: "/[id]",
-                                params: {
-                                    id: os.idChamado,
-                                    titulo: os.titulo,
-                                    descricao: os.descricao,
-                                    solicitante: os.solicitante,
-                                    local: os.localizacao
 
-                                }
+                  
+                        <TouchableOpacity
+                            key={os.idChamado}
+                            onPress={() => {
+                                router.push({
+                                    pathname: "/[id]",
+                                    params: {
+                                        id: os.idChamado,
+                                        titulo: os.titulo,
+                                        descricao: os.descricao,
+                                        solicitante: os.idUsuarioNavigation?.nomeCompleto ?? "Nao informado",
+                                        local: os.localiza,
+                                        equipamento: os.equipamento,
+                                        
+                                        fotoOsUrl: os.fotoOsUrl
+                                    }   
 
 
 
-                            })
+                                })
 
-                        }}>
+                            }}>
 
                             <View style={minhaOSStyle.section_card2}>
 
@@ -135,27 +141,27 @@ export default () => {
 
 
 
-                                    <View style={minhaOSStyle.header_card}>
+                                <View style={minhaOSStyle.header_card}>
 
-                                        <Text style={minhaOSStyle.section__texto2}>
-                                            OS - {os.idChamado.substring(0, 3)}
+                                    <Text style={minhaOSStyle.section__texto2}>
+                                        OS - {os.idChamado.substring(0, 3)}
+                                    </Text>
+                                    {/* <Link href="/detalheOS" asChild> */}
+                                    <TouchableOpacity style={minhaOSStyle.user__button5}>
+                                        <Text style={minhaOSStyle.button_text1}>
+                                            {os.statusOs}
                                         </Text>
-                                        {/* <Link href="/detalheOS" asChild> */}
-                                        <TouchableOpacity style={minhaOSStyle.user__button5}>
-                                            <Text style={minhaOSStyle.button_text1}>
-                                                {os.statusOs}
-                                            </Text>
-                                        </TouchableOpacity>
-                                        {/* </Link> */}
-                                    </View>
+                                    </TouchableOpacity>
+                                    {/* </Link> */}
+                                </View>
 
-                                    <Text style={minhaOSStyle.section__texto1}>
-                                        {os.titulo}
-                                    </Text>
+                                <Text style={minhaOSStyle.section__texto1}>
+                                    {os.titulo}
+                                </Text>
 
-                                    <Text style={minhaOSStyle.Text}>
-                                        {os.descricao}
-                                    </Text>
+                                <Text style={minhaOSStyle.Text}>
+                                    {os.descricao}
+                                </Text>
 
                                 {/* </View> */}
                             </View>

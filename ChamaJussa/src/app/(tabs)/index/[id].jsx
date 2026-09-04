@@ -2,11 +2,65 @@ import { Text, View, Image, TouchableOpacity, ScrollView } from "react-native";
 import { DetalheOSStyle } from "../styles/detalheOSStyle";
 import { useLocalSearchParams } from "expo-router";
 import { useRouter } from "expo-router";
+import { useEffect, useState } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import axios from "axios";
 
 export default function DetalheOS() {
-    const {id, titulo, descricao, local, solicitante} = useLocalSearchParams();
+    const {
+    id,
+    equipamento,
+    local,
+    fotoOsUrl,
+    descricao
+} = useLocalSearchParams();
+
+    const [os, setOs] = useState(null);
 
     const router = useRouter()
+
+
+    useEffect(() => {
+        const buscarOS = async () => {
+            try {
+                const token = await AsyncStorage.getItem("token");
+
+                console.log("ID RECEBIDO:", id);
+
+                const response = await axios.get(
+                    `http://172.16.1.179:5228/api/Chamado/${id}`,
+                    {
+                        headers: {
+                            Authorization: `Bearer ${token}`
+                        }
+                    }
+                );
+
+                console.log("OS:", response.data);
+
+                setOs(response.data);
+
+            } catch (error) {
+                console.log("ERRO:", error);
+            }
+        };
+
+        if (id) {
+            buscarOS();
+        }
+
+    }, [id]);
+
+    if (!os) {
+        return (
+            <View style={DetalheOSStyle.Container}>
+                <Text style={DetalheOSStyle.Text}>
+                    Carregando...
+                </Text>
+            </View>
+        );
+    }
+
 
     return (
         <View style={DetalheOSStyle.Container}>
@@ -33,8 +87,10 @@ export default function DetalheOS() {
                             </Text>
 
                             <Text style={DetalheOSStyle.section__texto2}>
-                                Cadeira quebrada
+                                {equipamento || "Não informado"}
                             </Text>
+
+
                         </View>
                     </View>
 
@@ -53,6 +109,7 @@ export default function DetalheOS() {
                             <Text style={DetalheOSStyle.section__texto2}>
                                 {local}
                             </Text>
+
                         </View>
                     </View>
 
@@ -69,7 +126,7 @@ export default function DetalheOS() {
                             </Text>
 
                             <Text style={DetalheOSStyle.section__texto2}>
-                                {solicitante}
+                                {os.idUsuarioNavigation?.nomeCompleto}
                             </Text>
                         </View>
                     </View>
@@ -90,7 +147,7 @@ export default function DetalheOS() {
                     </Text>
 
                     <Text style={DetalheOSStyle.section__texto3}>
-                      {descricao}
+                        {descricao}
                     </Text>
 
                     <Text style={DetalheOSStyle.section__texto1}>
@@ -99,7 +156,8 @@ export default function DetalheOS() {
 
                     <Image
                         style={DetalheOSStyle.figure_section__img}
-                        source={require("../../../../assets/Cadeira-quebrada.png")}
+                        source={{ 
+                            uri: `http://172.16.1.179:5228/imagens/${fotoOsUrl}` }}
                     />
 
                 </View>
@@ -113,7 +171,7 @@ export default function DetalheOS() {
 
             </ScrollView>
 
-      
+
         </View>
     );
 };
