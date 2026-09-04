@@ -20,7 +20,7 @@ export default function Login() {
             fromData.append("Email", emailDigitado);
             fromData.append("Senha", senhaDigitada);
 
-            const response = await axios.post("http://172.16.1.179:5228/api/Login",fromData);
+            const response = await axios.post("http://172.16.36.23:5228/api/Login",fromData);
 
             const token = response.data.token;
             await AsyncStorage.setItem("token", token);

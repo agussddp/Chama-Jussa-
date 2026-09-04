@@ -28,7 +28,7 @@ export default function DetalheOS() {
                 console.log("ID RECEBIDO:", id);
 
                 const response = await axios.get(
-                    `http://172.16.1.179:5228/api/Chamado/${id}`,
+                    `http://172.16.36.23:5228/api/Chamado/${id}`,
                     {
                         headers: {
                             Authorization: `Bearer ${token}`
@@ -157,7 +157,7 @@ export default function DetalheOS() {
                     <Image
                         style={DetalheOSStyle.figure_section__img}
                         source={{ 
-                            uri: `http://172.16.1.179:5228/imagens/${fotoOsUrl}` }}
+                            uri: `http://172.16.36.23:5228/imagens/${fotoOsUrl}` }}
                     />
 
                 </View>

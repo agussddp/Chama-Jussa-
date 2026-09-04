@@ -22,6 +22,8 @@ export default function CriarOS() {
     const criarChamado = async () => {
         try {
 
+            const resposta = await fetch(foto.uri);
+            const blob = await resposta.blob();
             const token = await AsyncStorage.getItem("token");
 
             const fromdata = new FormData();
@@ -32,23 +34,31 @@ export default function CriarOS() {
             fromdata.append("Localizacao", localiza);
 
             if (foto) {
+                console.log("========== FOTO ==========");
+                console.log("URI:", foto.uri);
+                console.log("NOME:", foto.fileName);
+                console.log("TIPO:", foto.mimeType);
+                console.log("==========================")
 
-                console.log("foto selecionada", foto);
+                
 
-                fromdata.append("Foto_OS", { 
-                    uri: foto.uri, 
-                    name: foto.fileName || "foto.jpg",
-                    type: foto.mimeType || "image/jpeg", });
+                fromdata.append("Foto_OS", {
+                    uri: foto.uri,
+                    name: "foto.jpg",
+                    blob,
+                    type: "image/jpeg",
+                });
 
-                console.log("imagem adicionada ao fromdata");
 
 
+            } else{
+                console.log("nenhuma foto selecionada");
+                
             }
 
-            const response = await axios.post("http://172.16.1.179:5228/api/Chamado", fromdata, {
+            const response = await axios.post("http://172.16.36.23:5228/api/Chamado", fromdata, {
                 headers: {
                     Authorization: `Bearer ${token}`,
-                    "Content-Type": "multipart/form-data",
                 },
             }
             );
@@ -68,25 +78,25 @@ export default function CriarOS() {
 
 
     const tirarFoto = async () => {
-    const permissao = await ImagePicker.requestCameraPermissionsAsync();
+        const permissao = await ImagePicker.requestCameraPermissionsAsync();
 
-    if (!permissao.granted) {
-        alert("Permissão para usar a câmera é necessária.");
-        return;
-    }
+        if (!permissao.granted) {
+            alert("Permissão para usar a câmera é necessária.");
+            return;
+        }
 
-    const resultado = await ImagePicker.launchCameraAsync({
-        allowsEditing: true,
-        quality: 0.8,
-    });
+        const resultado = await ImagePicker.launchCameraAsync({
+            allowsEditing: true,
+            quality: 0.8,
+        });
 
-    console.log("Resultado câmera:", resultado);
+        console.log("Resultado câmera:", resultado);
 
-    if (!resultado.canceled) {
-        console.log("FOTO TIRADA:", resultado.assets[0]);
-        setFoto(resultado.assets[0]);
-    }
-};
+        if (!resultado.canceled) {
+            console.log("FOTO TIRADA:", resultado.assets[0]);
+            setFoto(resultado.assets[0]);
+        }
+    };
 
 
 
@@ -170,7 +180,7 @@ export default function CriarOS() {
                     <Text style={CriarOSStyle.PlaceholderText}>{foto ? "Imagem selecionada" : "Insira Imagem"}</Text>
                 </TouchableOpacity>
 
-              
+
 
 
                 <TouchableOpacity style={CriarOSStyle.Button} onPress={criarChamado}>

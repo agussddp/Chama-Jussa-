@@ -129,7 +129,6 @@
     //Adiciona o mapeamento de controles
     app.MapControllers();
 
-app.Run("http://172.16.1.179:5228");
 
-
+    app.Run();
 

@@ -80,7 +80,11 @@
             {
 
 
-                var usuarioId = User.FindFirst(JwtRegisteredClaimNames.Jti)?.Value; 
+                  
+
+
+
+            var usuarioId = User.FindFirst(JwtRegisteredClaimNames.Jti)?.Value; 
                 if (usuarioId == null)
                     return Unauthorized("Usuário não identificado.");
 
@@ -115,9 +119,16 @@
                     }
 
                     chamado.FotoOsUrl = nomeArquivo;
-                }
 
-                chamado.Titulo = novoChamado.Titulo!;
+                Console.WriteLine("========== FOTO RECEBIDA ==========");
+                Console.WriteLine($"Nome: {novoChamado.Foto_OS.FileName}");
+                Console.WriteLine($"Tipo: {novoChamado.Foto_OS.ContentType}");
+                Console.WriteLine($"Tamanho: {novoChamado.Foto_OS.Length}");
+
+
+            }
+
+            chamado.Titulo = novoChamado.Titulo!;
                 chamado.Localiza = novoChamado.Localizacao;
                 chamado.Descricao = novoChamado.Descricao ?? "";
                 chamado.Equipamento = novoChamado.Equipamento;
@@ -263,7 +274,7 @@
 
                     return NoContent();
 
-                x
+                
                 }
                 catch (Exception e)
                 {

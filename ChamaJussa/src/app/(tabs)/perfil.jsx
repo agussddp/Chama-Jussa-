@@ -9,7 +9,7 @@ export default function Perfil() {
     const { nome, email, foto } = useLocalSearchParams();
 
     const fotoUrl = foto
-        ? `http://172.16.1.179:5228/imagens/${foto}`
+        ? `http://172.16.36.23:5228/imagens/${foto}`
         : null;
 
 
@@ -29,7 +29,7 @@ export default function Perfil() {
             <View style={PerfilStyle.section_card}>
 
 
-                <Image style={PerfilStyle.figure_section__img} source={fotoUrl ? { uri: `http://172.16.1.179:5228/imagens/${foto}`} : require("../../../assets/User.jpg")} />
+                <Image style={PerfilStyle.figure_section__img} source={fotoUrl ? { uri: `http://172.16.36.23:5228/imagens/${foto}`} : require("../../../assets/User.jpg")} />
 
                 <Text style={PerfilStyle.section__texto1}>{nome}</Text>
                 <Text style={PerfilStyle.section__texto2}>{email}</Text>
